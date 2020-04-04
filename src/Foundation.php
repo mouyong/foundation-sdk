@@ -41,7 +41,9 @@ class Foundation extends Container
         parent::__construct();
 
         $this['options'] = function () use ($options) {
-            return new Collection(array_merge($this->config, $options));
+            $this->config = new Collection(array_merge($this->config, $options));
+
+            return $this->config;
         };
 
         foreach ($this->providers() as $provider) {

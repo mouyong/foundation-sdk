@@ -39,11 +39,9 @@ abstract class AbstractClient implements ApiContract
 
     public function doRequest(string $method, string $uri, array $data = [], array $options = [])
     {
-        if (! method_exists($this->app->access_token, 'applyAccessTokenToRequest')) {
-            throw new \RuntimeException(sprintf("%s@applyAccessTokenToRequest doesn't exists, please implement applyAccessTokenToRequest", get_class($this->app->access_token)));
+        if (property_exists($this->app, 'access_token')) {
+            $data = $this->app->access_token->applyAccessTokenToRequest($data);
         }
-
-        $data = $this->app->access_token->applyAccessTokenToRequest($data);
 
         $data = $this->sign($data);
 
