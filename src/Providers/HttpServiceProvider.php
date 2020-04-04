@@ -3,10 +3,8 @@
 namespace Mouyong\Foundation\Providers;
 
 use Pimple\Container;
-use Psr\Log\LoggerAwareInterface;
+use GuzzleHttp\Client;
 use Pimple\ServiceProviderInterface;
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HttpServiceProvider implements ServiceProviderInterface
 {
@@ -17,19 +15,7 @@ class HttpServiceProvider implements ServiceProviderInterface
                 'timeout' => 10,
             ];
 
-            /** @var HttpClientInterface|LoggerAwareInterface $http */
-            $http = HttpClient::create($options);
-
-            $http->setLogger($pimple['log']);
-
-            return $http;
+            return new Client($options);
         };
-
-        $pimple->extend('http', function ($http, $pimple) {
-            /** @var HttpClientInterface|LoggerAwareInterface $http */
-            $http->setLogger($pimple['log']);
-
-            return $http;
-        });
     }
 }
