@@ -34,7 +34,7 @@ abstract class AbstractClient implements ApiContract
 
     public function json($uri, $data = [], $options = [])
     {
-        return $this->doRequest('POST', $uri, $data, $options);
+        return $this->doRequest('JSON', $uri, $data, $options);
     }
 
     public function doRequest(string $method, string $uri, array $data = [], array $options = [])
