@@ -50,7 +50,7 @@ abstract class AbstractClient implements ApiContract
         switch ($method) {
             case 'GET': $options['query'] = $data; break;
             case 'POST': $options['form_params'] = $data; break;
-            case 'JSON': $options['json'] = $data; break;
+            case 'JSON': $options['json'] = $data; $method = 'POST'; break;
         }
 
         return $this->request($method, $uri, $options);
