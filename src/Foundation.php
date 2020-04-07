@@ -4,8 +4,7 @@ namespace Mouyong\Foundation;
 
 use Monolog\Logger;
 use Pimple\Container;
-use Symfony\Component\HttpClient\CurlHttpClient;
-use Symfony\Component\HttpClient\NativeHttpClient;
+use GuzzleHttp\Client;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Mouyong\Foundation\Providers\LogServiceProvider;
 use Mouyong\Foundation\Providers\HttpServiceProvider;
@@ -20,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @property-read AbstractAccessToken $access_token
  * @property-read FilesystemAdapter $cache
  * @property-read Logger $log
- * @property-read AbstractClient|CurlHttpClient|NativeHttpClient $http
+ * @property-read Client $http
  * @property-read Request $request
  */
 class Foundation extends Container

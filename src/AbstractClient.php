@@ -39,7 +39,7 @@ abstract class AbstractClient implements ApiContract
 
     public function doRequest(string $method, string $uri, array $data = [], array $options = [])
     {
-        if (property_exists($this->app, 'access_token')) {
+        if ($this->app->offsetExists('access_token')) {
             $data = $this->app->access_token->applyAccessTokenToRequest($data);
         }
 
