@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Class Foundation
  * @package Mouyong\Foundation
  *
+ * @property-read Collection $options
  * @property-read AbstractAccessToken $access_token
  * @property-read FilesystemAdapter $cache
  * @property-read Logger $log
