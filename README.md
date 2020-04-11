@@ -11,7 +11,15 @@ $ composer require mouyong/foundation-sdk -vvv
 
 ## Usage
 
-TODO
+创建 Application 继承 Foundation，在 Application 类中，继承 $config、$provider 属性。
+
+创建 Client 继承 AbstractClient。实现父类中的 sign 签名函数（如无签名直接返回数据）、request 函数发起 http 请求、castResponseToType 处理响应信息，并在 request 中调用 castResponseToType 函数。
+
+在 castResponseToType 中，可以进行错误校验，数据提取等操作。
+
+如果 api 需要 access_token 等信息。创建 AccessToken 继承 AbstractAccessToken 类。实现父类的相关函数。根据需要覆盖父类的相关属性。
+
+创建相应的函数，并绑定到容器中。
 
 ## Contributing
 
